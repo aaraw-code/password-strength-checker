@@ -2,6 +2,18 @@
  Python tool that checks the strength of a password
 
 import string
+
+def check_repeated_charater(password,limit=4):
+    count = 1
+    for i in range(1,len(password)):
+        if password[1] == password[i-1]:
+            count += 1
+            if count >= limit:
+                return True
+        else:
+            count =1
+    return False
+
 print("🔒 PASSWORD CHECKER 🔍")
 
 letters = string.ascii_letters
@@ -44,6 +56,12 @@ if password.lower() not in common_passwords:
     score += 1
 else:
     tips.append("Avoid common password")
+
+if check_repeated_charater(password):
+    tips.append("Avoid repeated character!")
+else:
+    score +=1
+
 
 
 if score == 6:
