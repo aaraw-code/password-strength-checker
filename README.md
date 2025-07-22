@@ -52,16 +52,15 @@ if any(char in special for char in password):
 else:
     tips.append(f"Add special character eg: {special}")
 
-if password.lower() not in common_passwords:
-    score += 1
-else:
-    tips.append("Avoid common password")
-
 if check_repeated_charater(password):
     tips.append("Avoid repeated character!")
 else:
     score +=1
 
+if password.lower() not in common_passwords:
+    score += 1
+else:
+    tips.append("Avoid common password")
 
 
 if score == 6:
